@@ -8,7 +8,7 @@
 
 WITH facebook_ads_ads AS (
 
-SELECT  date_start day--*
+SELECT  date_start as day--*
         ,account_id --*
         ,account_name
         ,campaign_id --*
