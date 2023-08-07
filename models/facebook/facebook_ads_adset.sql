@@ -1,8 +1,8 @@
 
 {{ config(materialized='incremental'
          ,incremental_strategy='merge'
-         ,primary_key=["date_start", "account_id", "campaign_id", "adset_id", "publisher_platform", "platform_position", "impression_device" ]
-         ,cluster_by=["date_start","campaign_id","adset_id"]
+         ,primary_key=["day", "account_id", "campaign_id", "adset_id", "publisher_platform", "platform_position", "impression_device" ]
+         ,cluster_by=["day","campaign_id","adset_id"]
     )
 }}
 

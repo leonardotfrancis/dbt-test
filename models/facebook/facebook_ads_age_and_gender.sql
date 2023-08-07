@@ -9,14 +9,14 @@
 
 {{ config(materialized='incremental'
          ,incremental_strategy='merge'
-         ,primary_key=["date_start", "account_id", "campaign_id", "adset_id", "ad_id", "age", "gender" ]
-         ,cluster_by=["date_start","campaign_id","adset_id","ad_id"]
+         ,primary_key=["day", "account_id", "campaign_id", "adset_id", "ad_id", "age", "gender" ]
+         ,cluster_by=["day","campaign_id","adset_id","ad_id"]
     )
 }}
 
 WITH facebook_ads_ads_age_and_gender AS (
 
-SELECT  date_start day--*
+SELECT  date_start as day--*
         ,account_id --*
         ,account_name
         ,campaign_id --*
