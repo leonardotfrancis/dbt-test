@@ -22,7 +22,7 @@ SELECT  ads.segments_date                       as day--*
         ,campaign_advertising_channel_type                                                                              as campaign_channel
         ,campaign_payment_mode                                                                                          as campaign_payment_mode
         ,campaign_optimization_score                                                                                    as campaign_optimization_score
-        ,ad_group_ad_ad_final_urls                                                                                      as ad_final_urls
+        ,ad_group_criterion_final_urls                                                                                  as ad_final_urls
         ,campaign_url_custom_parameters                                                                                 as campaign_url_custom_parameters
         --metrics               
         ,IFNULL(ROUND(SAFE_DIVIDE(metrics_cost_micros, 1000000),2), 0)                                                   as investment 
