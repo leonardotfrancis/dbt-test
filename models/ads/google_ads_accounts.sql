@@ -14,7 +14,7 @@ SELECT  customer_id --*
         ,MAX(customer_currency_code)    AS customer_currency_code
         ,MAX(customer_manager)          AS customer_manager
         ,MAX(_airbyte_emitted_at)       AS ingestion_datetime_at
-FROM bettrads-develop.landing_{{ var('BQ_DATASET') }}.ads_accounts
+FROM {{ var('BQ_PROJECT') }}.landing_{{ var('BQ_DATASET') }}.ads_accounts
 GROUP BY customer_id
 
 )

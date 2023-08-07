@@ -10,13 +10,11 @@ WITH google_ads_gender AS (
 
 SELECT  ads.segments_date                       as day--*
         ,ads.customer_id                        as account_id --*
-        ,ads.customer_descriptive_name          as account_name
+        -- ,ads.customer_descriptive_name          as account_name
         ,campaign_id --*
         ,campaign_name
         ,ad_group_id --*
         ,ad_group_name
-        ,ad_group_ad_ad_id                      as ad_id --*
-        ,null ad_name
         ,ad_group_criterion_gender_type         as gender --*
         --campaign details
         ,campaign_start_date
@@ -55,7 +53,7 @@ SELECT  ads.segments_date                       as day--*
         ,IFNULL(ROUND(metrics_absolute_top_impression_percentage,4),0)                                                   as absoluteTopImpressionPercentage
         ,_airbyte_facebook_ads_insights_platform_and_device_hashid airbyte_hashid
         ,_airbyte_emitted_at ingestion_datetime_at
-FROM bettrads-develop.landing_{{ var('BQ_DATASET') }}.ads_gender_view_custom ads
+FROM {{ var('BQ_PROJECT') }}.landing_{{ var('BQ_DATASET') }}.ads_gender_view_custom ads
 
 )
 SELECT  ads.day 

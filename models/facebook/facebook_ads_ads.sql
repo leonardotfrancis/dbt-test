@@ -38,7 +38,7 @@ SELECT  date_start day--*
         ,inline_link_click_ctr
         ,_airbyte_facebook_ads_insights_platform_and_device_hashid airbyte_hashid
         ,_airbyte_emitted_at ingestion_datetime_at
-FROM bettrads-develop.{{ var('BQ_DATASET') }}.facebook_ads_insights_platform_and_device
+FROM {{ var('BQ_PROJECT') }}.landing_{{ var('BQ_DATASET') }}.facebook_ads_insights_platform_and_device
 
 )
 ,facebook_ads_open_columns AS (
@@ -102,19 +102,19 @@ SELECT  ads.airbyte_hashid
 FROM    (SELECT airbyte_hashid 
            FROM facebook_ads_ads
         GROUP BY airbyte_hashid) ads
-JOIN    bettrads-develop.{{ var('BQ_DATASET')}}.facebook_ads_insights_platform_and_device_actions                                   actions             ON ads.airbyte_hashid = actions._airbyte_facebook_ads_insights_platform_and_device_hashid
-JOIN    bettrads-develop.{{ var('BQ_DATASET')}}.facebook_ads_insights_platform_and_device_cost_per_action_type                      cost_action         ON ads.airbyte_hashid = cost_action._airbyte_facebook_ads_insights_platform_and_device_hashid
-JOIN    bettrads-develop.{{ var('BQ_DATASET')}}.facebook_ads_insights_platform_and_device_video_p25_watched_actions                 video_p25           ON ads.airbyte_hashid = video_p25._airbyte_facebook_ads_insights_platform_and_device_hashid
-JOIN    bettrads-develop.{{ var('BQ_DATASET')}}.facebook_ads_insights_platform_and_device_video_p50_watched_actions                 video_p50           ON ads.airbyte_hashid = video_p50._airbyte_facebook_ads_insights_platform_and_device_hashid
-JOIN    bettrads-develop.{{ var('BQ_DATASET')}}.facebook_ads_insights_platform_and_device_video_p75_watched_actions                 video_p75           ON ads.airbyte_hashid = video_p75._airbyte_facebook_ads_insights_platform_and_device_hashid
-JOIN    bettrads-develop.{{ var('BQ_DATASET')}}.facebook_ads_insights_platform_and_device_video_p100_watched_actions                video_p100          ON ads.airbyte_hashid = video_p100._airbyte_facebook_ads_insights_platform_and_device_hashid
-JOIN    bettrads-develop.{{ var('BQ_DATASET')}}.facebook_ads_insights_platform_and_device_cost_per_thruplay                         cost_per_thruplay   ON ads.airbyte_hashid = cost_per_thruplay._airbyte_facebook_ads_insights_platform_and_device_hashid
-JOIN    bettrads-develop.{{ var('BQ_DATASET')}}.facebook_ads_insights_platform_and_device_video_continuous_2_sec_watched_actions    unique_video        ON ads.airbyte_hashid = unique_video._airbyte_facebook_ads_insights_platform_and_device_hashid
-JOIN    bettrads-develop.{{ var('BQ_DATASET')}}.facebook_ads_insights_platform_and_device_unique_actions                            unique_actions      ON ads.airbyte_hashid = unique_actions._airbyte_facebook_ads_insights_platform_and_device_hashid
-JOIN    bettrads-develop.{{ var('BQ_DATASET')}}.facebook_ads_insights_platform_and_device_video_p100_watched_actions                video               ON ads.airbyte_hashid = video._airbyte_facebook_ads_insights_platform_and_device_hashid
+JOIN    {{ var('BQ_PROJECT') }}.landing_{{ var('BQ_DATASET') }}.facebook_ads_insights_platform_and_device_actions                                   actions             ON ads.airbyte_hashid = actions._airbyte_facebook_ads_insights_platform_and_device_hashid
+JOIN    {{ var('BQ_PROJECT') }}.landing_{{ var('BQ_DATASET') }}.facebook_ads_insights_platform_and_device_cost_per_action_type                      cost_action         ON ads.airbyte_hashid = cost_action._airbyte_facebook_ads_insights_platform_and_device_hashid
+JOIN    {{ var('BQ_PROJECT') }}.landing_{{ var('BQ_DATASET') }}.facebook_ads_insights_platform_and_device_video_p25_watched_actions                 video_p25           ON ads.airbyte_hashid = video_p25._airbyte_facebook_ads_insights_platform_and_device_hashid
+JOIN    {{ var('BQ_PROJECT') }}.landing_{{ var('BQ_DATASET') }}.facebook_ads_insights_platform_and_device_video_p50_watched_actions                 video_p50           ON ads.airbyte_hashid = video_p50._airbyte_facebook_ads_insights_platform_and_device_hashid
+JOIN    {{ var('BQ_PROJECT') }}.landing_{{ var('BQ_DATASET') }}.facebook_ads_insights_platform_and_device_video_p75_watched_actions                 video_p75           ON ads.airbyte_hashid = video_p75._airbyte_facebook_ads_insights_platform_and_device_hashid
+JOIN    {{ var('BQ_PROJECT') }}.landing_{{ var('BQ_DATASET') }}.facebook_ads_insights_platform_and_device_video_p100_watched_actions                video_p100          ON ads.airbyte_hashid = video_p100._airbyte_facebook_ads_insights_platform_and_device_hashid
+JOIN    {{ var('BQ_PROJECT') }}.landing_{{ var('BQ_DATASET') }}.facebook_ads_insights_platform_and_device_cost_per_thruplay                         cost_per_thruplay   ON ads.airbyte_hashid = cost_per_thruplay._airbyte_facebook_ads_insights_platform_and_device_hashid
+JOIN    {{ var('BQ_PROJECT') }}.landing_{{ var('BQ_DATASET') }}.facebook_ads_insights_platform_and_device_video_continuous_2_sec_watched_actions    unique_video        ON ads.airbyte_hashid = unique_video._airbyte_facebook_ads_insights_platform_and_device_hashid
+JOIN    {{ var('BQ_PROJECT') }}.landing_{{ var('BQ_DATASET') }}.facebook_ads_insights_platform_and_device_unique_actions                            unique_actions      ON ads.airbyte_hashid = unique_actions._airbyte_facebook_ads_insights_platform_and_device_hashid
+JOIN    {{ var('BQ_PROJECT') }}.landing_{{ var('BQ_DATASET') }}.facebook_ads_insights_platform_and_device_video_p100_watched_actions                video               ON ads.airbyte_hashid = video._airbyte_facebook_ads_insights_platform_and_device_hashid
 GROUP BY airbyte_hashid
 )
-SELECT  ads.date_start 
+SELECT  ads.day 
         ,ads.account_id 
         ,ads.account_name
         ,ads.campaign_id 
