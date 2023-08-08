@@ -8,7 +8,7 @@
 
 WITH google_ads_ads AS (
 
-SELECT  ads.segments_date                       as day--*
+SELECT  date(ads._airbyte_emitted_at)                 as day--*
         ,ads.customer_id                        as account_id --*
         ,ads.customer_descriptive_name          as account_name
         ,campaign_id --*
