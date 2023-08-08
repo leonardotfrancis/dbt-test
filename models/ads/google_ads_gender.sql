@@ -1,8 +1,8 @@
 
 {{ config(materialized='incremental'
          ,incremental_strategy='merge'
-         ,primary_key=["segments_date", "customer_id", "campaign_id", "ad_group_id", "ad_group_ad_ad_id", "ad_group_criterion_gender_type"]
-         ,cluster_by=["segments_date",  "customer_id", "campaign_id", "ad_group_ad_ad_id"]
+         ,primary_key=["segments_date", "customer_id", "campaign_id", "ad_group_id", "ad_group_criterion_gender_type"]
+         ,cluster_by=["day",  "account_id", "campaign_id", "ad_group_id"]
     )
 }}
 
