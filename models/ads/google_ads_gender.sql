@@ -51,7 +51,7 @@ SELECT  ads.segments_date                       as day--*
         ,IFNULL(ROUND(SAFE_MULTIPLY(SAFE_DIVIDE(metrics_video_quartile_p100_rate,metrics_impressions),1000),2), 0)       as vtr_100
         ,0                                                                                                               as topImpressionPercentage
         ,0                                                                                                               as absoluteTopImpressionPercentage
-        ,_airbyte_ads_age_range_view_custom_hashid airbyte_hashid
+        ,_airbyte_ads_gender_view_custom_hashid airbyte_hashid
         ,_airbyte_emitted_at ingestion_datetime_at
 FROM {{ var('BQ_PROJECT') }}.landing_{{ var('BQ_DATASET') }}.ads_gender_view_custom ads
 

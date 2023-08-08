@@ -10,7 +10,7 @@ WITH google_ads_ads AS (
 
 SELECT  ads.segments_date                       as day--*
         ,ads.customer_id                        as account_id --*
-        -- ,ads.customer_descriptive_name          as account_name
+        ,ads.customer_descriptive_name          as account_name
         ,campaign_id --*
         ,campaign_name
         ,ad_group_id --*
