@@ -126,6 +126,8 @@ SELECT  ads.day
         ,ads.publisher_platform  
         ,ads.platform_position
         ,ads.impression_device 
+        ,ads.date_start
+        ,ads.date_stop
         ,ads.optimization_goal
         ,ads.objective
         ,ads.buying_type
