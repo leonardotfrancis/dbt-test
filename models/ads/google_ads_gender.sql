@@ -37,7 +37,7 @@ SELECT  ads.segments_date                       as day--*
         ,IFNULL(ROUND(metrics_video_quartile_p50_rate,2), 0)                                                             as views_50
         ,IFNULL(ROUND(metrics_video_quartile_p75_rate,2), 0)                                                             as views_75
         ,IFNULL(ROUND(metrics_video_quartile_p100_rate,2), 0)                                                            as views_100
-        ,IFNULL(ROUND(metrics_bounce_rate,2), 0)                                                                         as bounce_rate
+        ,0                                                                                                               as bounce_rate
         ,IFNULL(ROUND(SAFE_DIVIDE(metrics_engagements,metrics_impressions),2),0)                                         as engagement_rate   
         ,IFNULL(ROUND(SAFE_DIVIDE(metrics_conversions,metrics_clicks),2),0)                                              as conversions_rate 
         ,IFNULL(ROUND(SAFE_DIVIDE(metrics_average_cpm, 1000000),2), 0)                                                   as cpm
@@ -49,9 +49,9 @@ SELECT  ads.segments_date                       as day--*
         ,IFNULL(ROUND(SAFE_MULTIPLY(SAFE_DIVIDE(metrics_video_views, metrics_impressions),1000),2), 0)                   as vtr
         ,IFNULL(ROUND(SAFE_MULTIPLY(SAFE_DIVIDE(metrics_video_quartile_p50_rate, metrics_impressions),1000),2), 0)       as vtr_50
         ,IFNULL(ROUND(SAFE_MULTIPLY(SAFE_DIVIDE(metrics_video_quartile_p100_rate,metrics_impressions),1000),2), 0)       as vtr_100
-        ,IFNULL(ROUND(metrics_top_impression_percentage,4),0)                                                            as topImpressionPercentage
-        ,IFNULL(ROUND(metrics_absolute_top_impression_percentage,4),0)                                                   as absoluteTopImpressionPercentage
-        ,_airbyte_facebook_ads_insights_platform_and_device_hashid airbyte_hashid
+        ,0                                                                                                               as topImpressionPercentage
+        ,0                                                                                                               as absoluteTopImpressionPercentage
+        ,_airbyte_ads_age_range_view_custom_hashid airbyte_hashid
         ,_airbyte_emitted_at ingestion_datetime_at
 FROM {{ var('BQ_PROJECT') }}.landing_{{ var('BQ_DATASET') }}.ads_gender_view_custom ads
 
