@@ -1,15 +1,15 @@
 
 {{ config(materialized='incremental'
          ,incremental_strategy='merge'
-         ,primary_key=["segments_date", "customer_id", "campaign_id", "ad_group_id", "ad_group_ad_ad_id"]
-         ,cluster_by=["segments_date",  "customer_id", "campaign_id", "ad_group_ad_ad_id"]
+         ,primary_key=["day", "account_id", "campaign_id", "ad_group_id", "ad_id"]
+         ,cluster_by=["day",  "account_id", "campaign_id", "ad_id"]
     )
 }}
 
 WITH google_ads_ads AS (
 
 SELECT  *
-FROM {{ var('BQ_PROJECT') }}.raw_{{ var('BQ_DATASET') }}.google_ads_ads ads
+FROM {{ var('BQ_PROJECT') }}.raw_{{ var('BQ_DATASET') }}.google_ads_ads 
 
 ), ads_gender as (
 SELECT  ads_gender.account_id 
@@ -20,7 +20,7 @@ FROM {{ var('BQ_PROJECT') }}.raw_{{ var('BQ_DATASET') }}.google_ads_gender  as a
 GROUP BY ads_gender.account_id 
         ,ads_gender.campaign_id
         ,ads_gender.ad_group_id 
-),
+)
 SELECT  *
   FROM google_ads_ads as ads LEFT JOIN ads_gender ON ads_gender.account_id = ads.account_id 
                                                  AND ads_gender.campaign_id = ads.campaign_id
