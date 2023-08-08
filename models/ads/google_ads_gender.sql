@@ -93,7 +93,7 @@ SELECT  ads.day
         ,IFNULL(views_100, 0)                                                                                           as views_100
         ,IFNULL(remarketing,0)                                                                                          as remarketing
         ,IFNULL(engagement_rate,0)                                                                                      as engagement_rate 
-        ,IFNULL(connect_rate,0)                                                                                         as connect_rate    
+        ,IFNULL(conversions_rate,0)                                                                                     as conversions_rate    
         ,IFNULL(vtr,0)                                                                                                  as vtr      
         ,IFNULL(vtr_50,0)                                                                                               as vtr_50      
         ,IFNULL(vtr_100,0)                                                                                              as vtr_100
