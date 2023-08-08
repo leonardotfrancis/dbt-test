@@ -63,8 +63,6 @@ SELECT  ads.day
         ,ads.campaign_name
         ,ads.ad_group_id 
         ,ads.ad_group_name
-        ,ads.ad_id 
-        ,ads.ad_name
         ,ads.gender
         ,ads.campaign_start_date  
         ,ads.campaign_end_date
