@@ -71,7 +71,7 @@ SELECT  day
         ,SUM(fb_pixel_view_content)                                                     AS fb_pixel_view_content
         ,MAX(ingestion_datetime_at)                                                     AS ingestion_datetime_at
 FROM {{ ref('facebook_ads_ads') }}
-GROUP BY date_start 
+GROUP BY day 
         ,account_id 
         ,campaign_id 
         ,adset_id 
