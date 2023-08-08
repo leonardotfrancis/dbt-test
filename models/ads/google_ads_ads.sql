@@ -75,8 +75,7 @@ SELECT  ads.day
         ,ads.campaign_url_custom_parameters
         ,ads.investment                                                                                                 as investment
         ,ads.impressions
-        ,ads.frequency
-        ,ads.reach
+        ,ads.reacts
         ,IFNULL(ROUND(cpm,2), 0)                                                                                        as cpm
         ,IFNULL(ROUND(cpc,2), 0)                                                                                        as cpc  
         ,IFNULL(ROUND(ctr,2), 0)                                                                                        as ctr

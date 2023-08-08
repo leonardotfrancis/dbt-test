@@ -10,7 +10,7 @@ WITH google_ads_gender AS (
 
 SELECT  ads.segments_date                       as day--*
         ,ads.customer_id                        as account_id --*
-        -- ,ads.customer_descriptive_name          as account_name
+        ,ads.customer_descriptive_name          as account_name
         ,campaign_id --*
         ,campaign_name
         ,ad_group_id --*
@@ -75,8 +75,7 @@ SELECT  ads.day
         ,ads.campaign_url_custom_parameters
         ,ads.investment                                                                                                 as investment
         ,ads.impressions
-        ,ads.frequency
-        ,ads.reach
+        ,ads.reacts
         ,IFNULL(ROUND(cpm,2), 0)                                                                                        as cpm
         ,IFNULL(ROUND(cpc,2), 0)                                                                                        as cpc  
         ,IFNULL(ROUND(ctr,2), 0)                                                                                        as ctr
