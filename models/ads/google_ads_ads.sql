@@ -21,7 +21,7 @@ GROUP BY ads_gender.account_id
         ,ads_gender.campaign_id
         ,ads_gender.ad_group_id 
 )
-SELECT  *
+SELECT  ads.*, ads_gender.gender
   FROM google_ads_ads as ads LEFT JOIN ads_gender ON ads_gender.account_id = ads.account_id 
                                                  AND ads_gender.campaign_id = ads.campaign_id
                                                  AND ads_gender.ad_group_id = ads.ad_group_id
